@@ -23,7 +23,6 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png", // iOS Add to Home Screen
     shortcut: "/favicon.svg",
   },
-  themeColor: "#111", // changes browser bar color on mobile
   appleWebApp: {
     capable: true,
     title: "Twist Cocktail",
