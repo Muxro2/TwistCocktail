@@ -3,15 +3,18 @@
 interface SearchboxProps {
   query: string;
   setQuery: (val: string) => void;
+	setSearchFocused: (val: boolean) => void
 }
 
-export default function Searchbox({query, setQuery}: SearchboxProps) {
+export default function Searchbox({query, setQuery, setSearchFocused}: SearchboxProps) {
 	return (
 		<div className="relative flex-1 h-[70%] content-center">
 	  	<input
 				type="text"
 				value={query}
 				onChange={(e) => setQuery(e.target.value)}
+				onFocus={() => setSearchFocused(true)}
+				onBlur={() => setSearchFocused(false)}
 				className="w-full h-full rounded-full border-1 border-[var(--accent)]" />
 			<svg 
 				className="absolute top-2 right-4 h-6 w-6"

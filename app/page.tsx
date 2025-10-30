@@ -10,15 +10,16 @@ export default function Home() {
   const [query, setQuery] = useState("");
   const [drinks, setDrinks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [searchFocused, setSearchFocused] = useState(false)
 
   useEffect(() => {
     if (!query) return;
 
     async function fetchDrinks() {
       setLoading(true);
-    const res = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`);
+    const res = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${encodeURIComponent(query)}`);
     const data = await res.json();
-    setDrinks(data.drinks);
+    setDrinks(data.drinks || []);
       setLoading(false);
     }
 
@@ -29,8 +30,8 @@ export default function Home() {
   return (
   <div className="w-full h-full py-5 ">
   
-  <div className="w-[100%] h-[10%] flex justify-evenly items-center gap-10 mb-4">
-  <div className="relative w-[40%] h-full ">
+  <div className="w-[100%] h-[10%] flex justify-center mb-4">
+  <div className={`relative h-full transition-all duration-500 ease-in-out ${searchFocused ? "w-0" : "w-[40%] gap-10"}`}>
     <Image
     src={logo}
     alt="Twist"
@@ -38,7 +39,7 @@ export default function Home() {
     className="object-cover"
     />
   </div>
-  <Searchbox query={query} setQuery={setQuery}/>
+  <Searchbox query={query} setQuery={setQuery} setSearchFocused={setSearchFocused}/>
   </div>
 
   <div className="flex flex-col gap-1">
