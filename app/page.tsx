@@ -1,6 +1,7 @@
 import Image from "next/image";
 import logo from "@/public/twistOutline.svg"
 import Searchbox from "@/components/Searchbox";
+import Card from "@/components/Card";
 
 export default async function Home() {
   const res = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita");
@@ -22,22 +23,14 @@ export default async function Home() {
   <Searchbox />
   </div>
 
-  <div className="w-[100%]">
-    <h1>Margaritas</h1>
-    <div className="w-[100%] flex flex-col gap-4">
-      {drinks.map((drink: any) => (
+
+  {drinks.map((drink: any) => (
         <div key={drink.idDrink} className="flex w-[100%]">
-          <Image
-            src={drink.strDrinkThumb}
-            alt={drink.strDrink}
-            width={100}
-            height={100}
-          />
-          <h2 className="flex-1 font-semibold">{drink.strDrink}</h2>
+          <Card image={drink.strDrinkThumb} name={drink.strDrink} />
         </div>
-      ))}
-    </div>
-  </div>
+  ))}
+
+
    
   </div>
   );
