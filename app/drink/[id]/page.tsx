@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { fetchDrinkById } from '@/lib/fetchDrinks';
 
 export default async function Drink({ params }: any) {
@@ -27,23 +28,31 @@ export default async function Drink({ params }: any) {
 	}
 
 	return (
-		<div>
-			<h1>{drink.strDrink}</h1>
+			<div className="relative w-full h-[100dvh]">
 			<Image
 				src={drink.strDrinkThumb}
 				alt={drink.strDrink}
-				width={200}
-				height={200}
+				fill
+				className="object-cover"
 			/>
-			
-			<p>{drink.strInstructions}</p>
+			<div className="absolute inset-0 bg-gradient-to-r from-[#111] to-transparent z-10"/>
+		
+		
 
-			<p>Ingredients:</p>
-			<ul>
-				{getIngredients(drink).map((ingredient: any, index: number) => (
-					<li key={index}>{ingredient}</li>
-				))}
-			</ul>
-		</div>
+      <div className="absolute inset-0 z-20">
+				<Link href="/" className="underline">Back</Link>
+				<h1>{drink.strDrink}</h1>
+
+
+				<p>{drink.strInstructions}</p>
+
+				<p>Ingredients:</p>
+				<ul>
+					{getIngredients(drink).map((ingredient: any, index: number) => (
+						<li key={index}>{ingredient}</li>
+					))}
+				</ul>
+			</div>
+			</div>
 	);
 }
