@@ -22,7 +22,7 @@ export default async function Drink({ params }: any) {
 	}
 
 	const drink = await fetchDrinkById(id);
-	console.log("Fetched Drink:", drink)
+
 	if (!drink) {
 		return <h1>No drink found</h1>;
 	}
@@ -39,19 +39,21 @@ export default async function Drink({ params }: any) {
 		
 		
 
-      <div className="absolute inset-0 z-20">
-				<Link href="/" className="underline">Back</Link>
-				<h1>{drink.strDrink}</h1>
+      <div className="absolute inset-0 z-20 ml-2 mt-2">
+				<Link href="/" className="text-title text-accent">&lt;</Link>
+				<h1 className="w-1/2 ml-3 my-4 text-title text-accent font-serif">{drink.strDrink}</h1>
 
-
-				<p>{drink.strInstructions}</p>
-
-				<p>Ingredients:</p>
-				<ul>
+				<p className="ml-4 text-info font-serif">Ingredients:</p>
+				<ul className="ml-6 mb-4">
 					{getIngredients(drink).map((ingredient: any, index: number) => (
-						<li key={index}>{ingredient}</li>
+						<li key={index} className="text-info font-serif">• {ingredient}</li>
 					))}
 				</ul>
+
+				
+				<p className="text-body font-serif w-3/4">{drink.strInstructions}</p>
+
+				
 			</div>
 			</div>
 	);

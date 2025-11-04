@@ -28,12 +28,12 @@ export default function Home() {
 
     
   <div className="fixed w-[100%] h-20 pt-3 flex justify-center bg-[#111] z-100">
-  <div className={`relative h-full transition-all duration-300 ease-in-out ${searchFocused ? "w-0" : "w-[40%] gap-10"}`}>
+  <div className={`relative h-[60%] transition-all duration-300 ease-in-out ${searchFocused ? "w-0" : "w-[120px]"}`}>
     <Image
     src={logo}
     alt="Twist"
     fill
-    className="object-cover"
+    className="object-cover object-[50%_40%]"
     />
   </div>
   <Searchbox query={query} setQuery={setQuery} setSearchFocused={setSearchFocused}/>

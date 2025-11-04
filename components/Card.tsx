@@ -14,19 +14,19 @@ export default function Card({image, name, id}: CardProps) {
   return (
     <Link 
 			href={`/drink/${id}`}
-			className="flex items-center w-[100%]">
+			className="flex w-[100%] bg-[#1a1a1a]">
 			<div className="relative block h-36 w-36 overflow-hidden">
 				<Image
 					src={image}
 					alt="thumbnail"
 					fill
-					className="object-cover"
+					className="inset-0 object-cover"
 				/>
 				<div className="absolute inset-0 left-10 bg-gradient-to-l from-[#111] to-transparent z-10" >
-					
+				</div>
 			</div>
-			</div>
-			<h1 className="absolute left-42 pb-10 text-[var(--accent)] text-2xl font-serif z-20">{name}</h1>
+			
+			<h1 className="absolute left-36 text-accent m-3 text-[24px] font-serif z-20">{name}</h1>
     </Link>
   );
 }

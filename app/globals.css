@@ -6,7 +6,11 @@
 }
 
 @theme {
-  --accent: #ffa500;
+  --color-accent: #ffa500;
+  --text-title: 48px;
+  --text-title--line-height: 1;
+  --text-body: 16px;
+  --text-info: 13px;
 }
 
 @theme inline {
